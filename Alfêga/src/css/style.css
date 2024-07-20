@@ -21,21 +21,143 @@ a {
   color: #fff;
 }
 
-.navbar {
-  padding: 30px;
-}
-
 .header {
+  position: relative;
   width: 100%;
-  height: 100%;
-  text-align: center;
-  font-size: smaller;
-  background-image: url(/src/img/modern-office-building-features-luxury-skyline-view-generated-by-ai.jpg);
+  height: 100vh;
+  background-image: url('/img/modern-office-building-features-luxury-skyline-view-generated-by-ai.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 20px;
 }
+
+.navbar {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  background-color: #f1af097a;
+  padding: 10px 0;
+  display: block;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar li {
+  margin: 0 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.navbar a:hover {
+  background-color: #555;
+}
+
+.mobile-menu-icon ,.mobile-menu{
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar {
+    padding: 1.5rem 2rem; /* Ajuste o padding para ficar proporcional ao tamanho da tela */
+  }
+
+  .navbar ul {
+    display: none; /* Esconda a lista de navegação padrão em telas menores */
+  }
+
+  .mobile-menu-icon {
+    display: block; /* Mostra o ícone do menu móvel */
+  }
+
+  .mobile-menu {
+    display: none; /* Inicialmente, oculta o menu móvel */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    background-color: #222020;
+    z-index: 3;
+    border-radius: 0 10px;
+    text-align: center;
+    overflow-y: auto;
+    padding-top: 4rem; /* Ajuste para não ocupar toda a tela */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.623);
+}
+.mobile-menu ul li {
+    display: block;
+    margin-bottom: 1rem; /* Espaçamento opcional entre os itens */
+}
+.mobile-menu-icon button{
+  display: block; 
+  color: #fff; /* Cor do ícone branca */
+  background: transparent; /* Remove o fundo */
+  border: none; /* Remove a borda */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.mobile-menu.open {
+  display: block; /* Mostra o menu móvel quando a classe .open é adicionada */
+}
+
+
+  .mobile-menu ul {
+    padding-top: 2rem;
+  }
+
+  .mobile-menu ul li {
+    margin-bottom: 1rem;
+  }
+
+  .mobile-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+
+  .mobile-menu a:hover {
+    background-color: #555;
+  }
+
+  .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+main {
+  margin-top: 80px;
+  padding: 20px;
+}
+
 
 #container {
   width: 100%;
@@ -47,12 +169,93 @@ a {
 
 .titulo-inicio {
   display: flex;
+  align-items: center;
 }
 
-.barrinha {
+.titulo-inicio h2 {
+  position: relative;
+}
+
+.titulo-inicio h2::before {
+  content: '';
+  position: absolute;
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10%;
+  height: 1px;
+  background-color: #f1af09;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  background-image: url('/img/skyscraper-architecture-shines-generative-ai-sunset-generative-ai.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 100px;
+
+}
+
+.carousel-track {
   display: flex;
-  width: 15%;
-  border: 1px solid #f1af097a;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  margin-right: 10px;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.295);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+}
+
+.carousel-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.carousel-item h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.carousel-item p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
 }
 
 
@@ -65,7 +268,8 @@ a {
   border-radius: 10px;
 }
 
-.container-cards-inicio  , .container-cards-inicio-1 {
+.container-cards-inicio,
+.container-cards-inicio-1 {
   border: 1px solid #000;
   border-radius: 10px;
   list-style: none;
@@ -74,34 +278,50 @@ a {
   background-color: #4e4e4e;
   width: 100%;
   display: flex;
-  padding: 40px ;
+  padding: 40px;
   gap: 20px;
   align-items: center;
   list-style: none;
+  margin-bottom: 100px;
 }
 
-.servicos {
+.card-servico-principal {
   padding: 20px;
   width: 100%;
-  padding: 30px;
+  display: flex;
+
+}
+
+.textos {
+  display: grid;
+  width: 100%;
+  padding: 20px;
+  gap: 40px;
+
 }
 
 img {
   border-radius: 10px;
 }
+
 .container-cards-inicio .img-inicio img,
-.container-cards-inicio .img img ,
-.servicos .img img ,
-.container-cards-inicio-1 img{
-    width: 400px;
-    height: 400px;
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+.container-cards-inicio .img img,
+.servicos .img img,
+.container-cards-inicio-1 img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
 }
 
-.texto-1 ,.texto-2{
+.texto-1,
+.texto-2 {
   background-color: #4e4e4e;
   display: flex;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 10px 12px 20px #f1af097a;
+  text-align: center;
+
 }
 
 .cards-secundarios {
@@ -121,12 +341,13 @@ img {
   color: #fff;
   transition: transform 0.5s;
   cursor: pointer;
-  overflow: hidden; /* Evita que o conteúdo vaze para fora do elemento */
+  overflow: hidden;
   padding: 20px;
 }
 
 .cards:hover {
   transform: translateY(-20px);
+  box-shadow: 10px 12px 40px #f1af097a;
 }
 
 .cards::before,
@@ -138,24 +359,23 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 1.2em;
-  transition: opacity 0.5s; /* Adiciona transição para suavizar as mudanças */
+  transition: opacity 0.5s;
 }
 
 .cards::before {
   background: linear-gradient(45deg, #4e4e4e, #222020);
-  opacity: 0; /* Inicia invisível */
+  opacity: 0;
 }
 
 .cards::after {
   background: linear-gradient(45deg, #4e4e4e, #222020);
   filter: blur(30px);
-  opacity: 0; /* Inicia invisível */
+  opacity: 0;
 }
 
 
-/* Ajuste para o hover, mostrando apenas a animação de transform */
 .cards:hover::before {
-  opacity: 0.6; /* Ajusta a opacidade para que o fundo não obscureça completamente o texto */
+  opacity: 0.6;
 }
 
 
@@ -224,8 +444,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px; /* Aumentando o tamanho do contêiner */
-  height: 70px; /* Aumentando o tamanho do contêiner */
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   color: #4d4d4d;
   background-color: #222020;
@@ -240,8 +460,8 @@ ul {
 .example-2 .icon-content a svg {
   position: relative;
   z-index: 1;
-  width: 40px; /* Aumentando o tamanho do ícone dentro do contêiner */
-  height: 40px; /* Aumentando o tamanho do ícone dentro do contêiner */
+  width: 40px;
+  height: 40px;
 }
 
 .example-2 .icon-content a .filled {
@@ -260,17 +480,17 @@ ul {
 }
 
 .example-2 .icon-content a[data-social="spotify"] .filled,
-.example-2 .icon-content a[data-social="spotify"] ~ .tooltip {
+.example-2 .icon-content a[data-social="spotify"]~.tooltip {
   background-color: #1db954;
 }
 
 .example-2 .icon-content a[data-social="pinterest"] .filled,
-.example-2 .icon-content a[data-social="pinterest"] ~ .tooltip {
+.example-2 .icon-content a[data-social="pinterest"]~.tooltip {
   background-color: #1827ff;
 }
 
 .example-2 .icon-content a[data-social="dribbble"] .filled,
-.example-2 .icon-content a[data-social="dribbble"] ~ .tooltip {
+.example-2 .icon-content a[data-social="dribbble"]~.tooltip {
   background-color: #ff2e7e;
 }
 
@@ -295,12 +515,10 @@ ul {
 }
 
 .example-2 .icon-content a svg {
-  width: 40px; /* Ajustando novamente o tamanho do ícone para garantir consistência */
-  height: 40px; /* Ajustando novamente o tamanho do ícone para garantir consistência */
+  width: 40px;
+  height: 40px;
   fill: #fff;
 }
-
-
 
 .rodape {
   background-color: #222;
@@ -308,9 +526,9 @@ ul {
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Alinhar conteúdo ao topo */
+  align-items: flex-start;
   flex-wrap: wrap;
-  position: relative; /* Adiciona posição relativa para alinhar o copyright */
+  position: relative;
 }
 
 .rodape h3 {
@@ -321,11 +539,13 @@ ul {
 
 .rodape p {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.3;
   margin-bottom: 15px;
 }
 
-.info-contato, .redes-sociais-rodape, .links-rapidos {
+.info-contato,
+.redes-sociais-rodape,
+.links-rapidos {
   width: 100%;
   max-width: 300px;
 }
@@ -343,7 +563,7 @@ ul {
 }
 
 .links-rapidos a:hover {
-  color: #f1c40f; /* Cor amarela para o hover */
+  color: #f1c40f;
 }
 
 .rodape p:last-child {
@@ -354,28 +574,28 @@ ul {
 .social-icons {
   display: flex;
   flex-direction: row;
-  justify-content: center; /* Centraliza os ícones horizontalmente */
-  gap: 20px; /* Espaçamento entre os ícones */
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-icons svg {
-  width: 20px; /* Tamanho dos ícones */
+  width: 20px;
   height: 20px;
-  border-radius: 50%; /* Garante que os ícones sejam circulares */
-  fill: #ffffff; /* Cor azul do Facebook */
+  border-radius: 50%;
+  fill: #ffffff;
 }
 
 .instagram svg {
-  fill: #ffffff; /* Cor do Instagram */
+  fill: #ffffff;
 }
 
 .whatsapp svg {
-  fill: #ffffff; /* Cor do WhatsApp */
+  fill: #ffffff;
 }
 
 .direitos {
   position: absolute;
-  bottom: 10px; /* Ajuste conforme necessário */
-  left: 20px; /* Ajuste conforme necessário */
+  bottom: 10px;
+  left: 20px;
   font-size: 12px;
 }
