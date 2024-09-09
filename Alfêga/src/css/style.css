@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -28,6 +30,7 @@ a {
   background-image: url('/img/modern-office-building-features-luxury-skyline-view-generated-by-ai.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   color: white;
   display: flex;
   align-items: center;
@@ -70,11 +73,11 @@ a {
   background-color: #555;
 }
 
-.mobile-menu-icon ,.mobile-menu{
+.mobile-menu-icon, .mobile-menu {
   display: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 768px) {
   .navbar {
     padding: 1.5rem 2rem; /* Ajuste o padding para ficar proporcional ao tamanho da tela */
   }
@@ -93,42 +96,31 @@ a {
     top: 0;
     left: 0;
     width: 80%;
-    height: 80%;
+    height: 100vh;
     background-color: #222020;
     z-index: 3;
-    border-radius: 0 10px;
+    border-radius: 0 10px 10px 0; /* Ajuste para bordas arredondadas apenas no lado direito */
     text-align: center;
     overflow-y: auto;
     padding-top: 4rem; /* Ajuste para não ocupar toda a tela */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.623);
-}
-.mobile-menu ul li {
-    display: block;
-    margin-bottom: 1rem; /* Espaçamento opcional entre os itens */
-}
-.mobile-menu-icon button{
-  display: block; 
-  color: #fff; /* Cor do ícone branca */
-  background: transparent; /* Remove o fundo */
-  border: none; /* Remove a borda */
-  font-size: 1.5rem; /* Tamanho do ícone */
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-}
+    transition: transform 0.3s ease; /* Adiciona uma transição suave para o menu aparecer/desaparecer */
+    transform: translateX(-100%); /* Inicialmente oculta o menu movendo-o para fora da tela */
+  }
 
-.mobile-menu.open {
-  display: block; /* Mostra o menu móvel quando a classe .open é adicionada */
-}
-
+  .mobile-menu.open {
+    display: block; /* Mostra o menu móvel quando a classe .open é adicionada */
+    transform: translateX(0); /* Move o menu para dentro da tela */
+  }
 
   .mobile-menu ul {
     padding-top: 2rem;
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0; /* Remove padding padrão */
   }
 
   .mobile-menu ul li {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Espaçamento opcional entre os itens */
   }
 
   .mobile-menu a {
@@ -143,21 +135,33 @@ a {
     background-color: #555;
   }
 
+  .mobile-menu-icon button {
+    display: block; 
+    color: #fff; /* Cor do ícone branca */
+    background: transparent; /* Remove o fundo */
+    border: none; /* Remove a borda */
+    font-size: 1.5rem; /* Tamanho do ícone */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
   .close-menu {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1rem;
+    right: 1rem;
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
   }
 }
 
+
 main {
   margin-top: 80px;
   padding: 20px;
 }
-
 
 #container {
   width: 100%;
@@ -198,7 +202,6 @@ main {
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 100px;
-
 }
 
 .carousel-track {
@@ -258,7 +261,6 @@ main {
   right: 10px;
 }
 
-
 .titulo-inicio,
 .container-cards-inicio {
   width: 100%;
@@ -272,24 +274,72 @@ main {
 .container-cards-inicio-1 {
   border: 1px solid #000;
   border-radius: 10px;
-  list-style: none;
   box-shadow: 10px 12px 40px #f1af097a;
   margin-bottom: 40px;
   background-color: #4e4e4e;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   padding: 40px;
   gap: 20px;
   align-items: center;
   list-style: none;
-  margin-bottom: 100px;
 }
+
+.container-cards-inicio,
+.container-cards-inicio-1 {
+  display: flex;
+  flex-direction: row; /* Alinha a imagem e a lista lado a lado por padrão */
+  gap: 1rem; /* Espaçamento opcional entre a imagem e a lista */
+  align-items: flex-start; /* Alinha o início da imagem e da lista */
+}
+.container-cards-inicio,
+.container-cards-inicio-1 .img {
+  flex: 1 1 30%; /* A imagem ocupa 40% da largura do contêiner */
+}
+.container-cards-inicio,
+.container-cards-inicio-1 img {
+  width: 100%; /* Faz com que a imagem ocupe 100% da largura do seu contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 10px; /* Adiciona bordas arredondadas à imagem */
+}
+
+.container-cards-inicio-1 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Alinha os itens da lista em uma coluna */
+  gap: 1rem; /* Espaçamento opcional entre os itens */
+  flex: 1 1 60%; /* A lista ocupa 60% da largura do contêiner */
+}
+
+.container-cards-inicio p{
+  padding: 20px; 
+  gap: 1rem; /* Espaçamento opcional entre os itens */
+  flex: 1 1 60%; /* A lista ocupa 60% da largura do contêiner */
+
+}
+
+.container-cards-inicio{
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+
+.container-cards-inicio-1 li {
+  background-color: #4e4e4e; /* Cor de fundo dos itens */
+  padding: 1rem; /* Espaçamento interno dos itens */
+  border-radius: 10px; /* Bordas arredondadas dos itens */
+  color: #fff; /* Cor do texto dos itens */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional dos itens */
+}
+
 
 .card-servico-principal {
   padding: 20px;
   width: 100%;
   display: flex;
-
 }
 
 .textos {
@@ -297,7 +347,7 @@ main {
   width: 100%;
   padding: 20px;
   gap: 40px;
-
+  margin-bottom: 50px;
 }
 
 img {
@@ -321,7 +371,6 @@ img {
   border-radius: 10px;
   box-shadow: 10px 12px 20px #f1af097a;
   text-align: center;
-
 }
 
 .cards-secundarios {
@@ -343,6 +392,9 @@ img {
   cursor: pointer;
   overflow: hidden;
   padding: 20px;
+  place-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .cards:hover {
@@ -373,11 +425,9 @@ img {
   opacity: 0;
 }
 
-
 .cards:hover::before {
   opacity: 0.6;
 }
-
 
 .container-card-equipe {
   width: 100%;
@@ -390,7 +440,6 @@ img {
 .container-equipe {
   width: 100%;
   margin-bottom: 20px;
-
 }
 
 .card-equipe {
@@ -410,7 +459,6 @@ img {
   border-radius: 10px;
   background-color: #4e4e4e;
   box-shadow: 10px 12px 40px #f1af097a;
-  display: flex;
   padding: 40px;
   gap: 20px;
   align-items: center;
@@ -598,4 +646,115 @@ ul {
   bottom: 10px;
   left: 20px;
   font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .card-servico-principal {
+    flex-direction: column; /* Alinha a imagem e os textos em coluna */
+    align-items: center; /* Centraliza a imagem e os textos horizontalmente */
+    gap: 10px; /* Ajusta o espaçamento entre a imagem e os textos */
+  }
+
+  .card-servico-principal .img, 
+  .card-servico-principal .textos {
+    flex: 1 1 100%; /* Faz com que ambos ocupem 100% da largura do contêiner */
+    width: 100%; /* Faz com que ambos ocupem 100% da largura do contêiner */
+  }
+
+  .card-servico-principal .textos {
+    gap: 20px;/* Ajusta o espaçamento entre os textos em telas menores */
+  }
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+  .header {
+    height: auto; /* Ajusta a altura do header para telas menores */
+    padding: 20px; /* Ajusta o padding do header */
+  }
+
+  .navbar {
+    padding: 1rem; /* Ajusta o padding da navbar */
+  }
+
+  .navbar ul {
+    display: none; /* Esconde a lista de navegação */
+  }
+
+  .mobile-menu {
+    display: block; /* Mostra o menu móvel */
+  }
+
+  .container-cards-inicio,
+  .container-cards-inicio-1 {
+    display: flex;
+    flex-direction: column; /* Alinha os itens em uma coluna, um abaixo do outro */
+    gap: 1rem; /* Espaçamento opcional entre os itens da lista */
+    padding: 1rem; /* Adiciona algum padding ao redor da container */
+    width: 100%; /* Ajusta a largura para ocupar a largura total disponível */
+    box-sizing: border-box; /* Inclui padding e bordas na largura e altura total do elemento */
+  }
+
+  .container-cards-inicio-1 {
+    flex-direction: column; /* Alinha os itens em uma única coluna */
+    gap: 1rem; /* Espaçamento opcional entre os itens */
+  }
+
+  .container-cards-inicio-1 .img {
+    width: 100%; /* Faz com que a imagem ocupe a largura total disponível */
+  }
+
+  .container-cards-inicio-1 ul {
+    flex-direction: column; /* Alinha os itens da lista em uma coluna */
+    gap: 1rem; /* Espaçamento opcional entre os itens */
+  }
+
+  .carousel-item img {
+    width: 60px; /* Ajusta o tamanho das imagens no carrossel */
+    height: 60px; /* Ajusta o tamanho das imagens no carrossel */
+  }
+
+  .titulo-inicio h2::before {
+    width: 5%; /* Ajusta a largura da linha decorativa no título */
+  }
+
+  .carousel-control {
+    font-size: 1rem; /* Ajusta o tamanho da fonte dos controles do carrossel */
+    padding: 8px; /* Ajusta o padding dos controles do carrossel */
+  }
+
+  .cards {
+    width: 100%; /* Ajusta a largura dos cartões */
+    height: 400px; /* Ajusta a altura dos cartões */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem; /* Ajusta o padding da navbar */
+  }
+
+  .mobile-menu {
+    padding-top: 2rem; /* Ajusta o padding do menu móvel */
+  }
+
+  .carousel-item img {
+    width: 50px; /* Ajusta o tamanho das imagens no carrossel */
+    height: 50px; /* Ajusta o tamanho das imagens no carrossel */
+  }
+
+  .titulo-inicio h2::before {
+    width: 3%; /* Ajusta a largura da linha decorativa no título */
+  }
+
+  .carousel-control {
+    font-size: 0.8rem; /* Ajusta o tamanho da fonte dos controles do carrossel */
+    padding: 6px; /* Ajusta o padding dos controles do carrossel */
+  }
+
+  .cards {
+    width: 100%; /* Ajusta a largura dos cartões */
+    height: auto; /* Ajusta a altura dos cartões */
+    padding: 10px; /* Ajusta o padding dos cartões */
+  }
 }
